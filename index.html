@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="style/style.css">
+</head>
+<body>	
+	<div class="container">
+		<div class="main">
+			<div class="main__header">
+				<div class="left_select">
+					<label for="length">length</label>
+					<select name="length" id="length">
+						<option value="1">2</option>
+						<option value="2">4</option>
+						<option value="3">6</option>
+						<option value="4">8</option>
+						<option value="5">10</option>
+						<option value="6">12</option>
+						<option value="7">14</option>
+						<option value="8">16</option>
+						<option value="9">18</option>
+						<option value="10">20</option>
+						<option value="11">22</option>
+						<option value="12">24</option>
+						<option value="13">26</option>
+						<option value="14">28</option>
+						<option value="15">30</option>
+					</select>
+				</div>
+				<div class="right_select">
+					<label for="width">width</label>
+					<select name="width" id="width">
+						<option value="1">2</option>
+						<option value="2">4</option>
+						<option value="3">6</option>
+						<option value="4">8</option>
+						<option value="5">10</option>
+						<option value="6">12</option>
+						<option value="7">14</option>
+						<option value="8">16</option>
+						<option value="9">18</option>
+						<option value="10">20</option>
+						<option value="11">22</option>
+						<option value="12">24</option>
+						<option value="13">26</option>
+						<option value="14">28</option>
+						<option value="15">30</option>
+					</select>
+				</div>
+			</div>
+			<div class="main__footer">
+				<button id="calculate">calculate</button>
+			</div>
+		</div>
+		<div class="popup">
+				<p class="white">You will need <span id="packs6">N</span> packs of 6pcs, <span id="packs8">M</span> packs of 8pcs.</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+		let result;
+		let length = document.getElementById('length');
+		let popup = document.querySelector('.popup');
+		let width = document.getElementById('width');
+		
+		let calculate = document.getElementById('calculate');
+		calculate.onclick = function() {
+			if (popup.classList.contains('animation_popup')) {
+				popup.classList.remove('animation_popup');
+				popup.classList.add('scale');
+				
+				setTimeout (function() {
+				  popup.classList.remove('scale');
+			      popup.classList.add('animation_popup');
+			    }, 500);
+			} else {
+				popup.classList.add('animation_popup');
+			}
+			setTimeout (function() {
+				result = parseInt(length.value) * parseInt(width.value);
+				let packs6 = result / 6;
+				let packs8 = result / 8;
+				document.getElementById('packs6').innerHTML = packs6.toFixed(2);
+				document.getElementById('packs8').innerHTML = packs8.toFixed(2);
+
+				console.log('Результат: ' + result);
+				console.log('Результат пачек по 6шт: ' +  packs6.toFixed(2));
+				console.log('Результат пачек по 8шт: ' + packs8.toFixed(2));
+			}, 400);
+			
+			
+		};
+
+		// const length =  document.getElementById('length');
+		// const calculate = document.getElementById('calculate');
+		// calculate.addEventListener('click', function() {
+		// 	console.log(length.value);
+		// });
+		// alert((7.114).toFixed(2));
+	</script>
+</body>
+</html>
